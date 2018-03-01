@@ -337,6 +337,23 @@ A SigrokUSBDevice resource describes a sigrok USB device.
 Used by:
   - `SigrokDriver`_
 
+USBSDMuxDevice
+~~~~~~~~~~~~~~
+A USBSDMuxDevice resource describes a Pengutronix
+`USB-SD-Mux <https://www.pengutronix.de/de/2017-10-23-usb-sd-mux-automated-sd-card-juggler.html>`_
+device.
+
+.. code-block:: yaml
+
+   USBSDMuxDevice:
+     match:
+       '@ID_PATH': 'pci-0000:00:14.0-usb-0:1.2'
+
+- match (str): key and value for a udev match, see `udev Matching`_
+
+Used by:
+  - `USBSDMUXDriver`_
+
 RemotePlace
 ~~~~~~~~~~~
 A RemotePlace describes a set of resources attached to a labgrid remote place.
@@ -969,6 +986,17 @@ Implements:
 
 The driver can be used in test cases by calling the `capture`, `stop` and
 `analyze` functions.
+
+USBSDMuxDriver
+~~~~~~~~~~~~~~
+The USBSDMuxDriver uses a USBSDMuxDevice ``Resource`` to control a USB-SD-Mux
+device via `usbsdmux <https://github.com/pengutronix/usbsdmux>`_ tool.
+
+Implements:
+  - None yet
+
+The driver can be used in test cases by calling the `set_mode` function with
+argument being `dut`, `host`, `off`, or `client`.
 
 Strategies
 ~~~~~~~~~~
