@@ -208,6 +208,8 @@ exports["MXSUSBLoader"] = USBGenericExport
 exports["AlteraUSBBlaster"] = USBGenericExport
 exports["SigrokUSBDevice"] = USBSigrokExport
 
+exports["USBMassStorage"] = USBGenericExport
+
 
 @attr.s
 class EthernetPortExport(ResourceExport):
