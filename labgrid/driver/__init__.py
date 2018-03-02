@@ -17,3 +17,4 @@ from .common import Driver
 from .qemudriver import QEMUDriver
 from .modbusdriver import ModbusCoilDriver
 from .sigrokdriver import SigrokDriver
+from .networkusbstoragedriver import NetworkUSBStorageDriver
