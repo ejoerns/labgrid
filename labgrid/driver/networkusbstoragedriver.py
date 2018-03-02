@@ -4,7 +4,7 @@ import subprocess
 import os
 
 from ..factory import target_factory
-from ..resource.udev import USBMassStorage
+from ..resource.udev import USBMassStorage, USBSDMuxDevice
 from ..resource.remote import NetworkUSBMassStorage
 from ..step import step
 from .common import Driver, check_file
@@ -12,7 +12,7 @@ from .common import Driver, check_file
 @target_factory.reg_driver
 @attr.s(cmp=False)
 class NetworkUSBStorageDriver(Driver):
-    bindings = {"storage": {USBMassStorage, NetworkUSBMassStorage}, }
+    bindings = {"storage": {USBMassStorage, NetworkUSBMassStorage, USBSDMuxDevice}, }
 
     def __attrs_post_init__(self):
         super().__attrs_post_init__()
