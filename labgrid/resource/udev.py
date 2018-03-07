@@ -305,3 +305,20 @@ class USBSDMuxDevice(USBResource):
             return dev.device_node
         else:
             return None
+
+@target_factory.reg_resource
+@attr.s(cmp=False)
+class USBPowerPort(USBResource):
+    """The SigrokUSBDevice describes an attached sigrok device with driver and
+    channel mapping, it is identified via usb using udev
+
+    Args:
+        driver (str): driver to use with sigrok
+        channels (str): a sigrok channel mapping as desribed in the sigrok-cli man page
+    """
+    index = attr.ib(default=None, validator=attr.validators.instance_of(int))
+    def __attrs_post_init__(self):
+        self.match['DEVTYPE'] = 'usb_interface'
+        self.match['DRIVER'] = 'hub'
+        super().__attrs_post_init__()
+
